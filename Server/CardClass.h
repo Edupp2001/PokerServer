@@ -86,20 +86,13 @@ public:
 		return out;
 	}
 };
-vector <Card> create_deck(int size) {
+vector <Card> create_deck(int size = 52) {
+	srand(time(NULL));
 	vector <Card> cards;
 	vector <Card> new_deck;
-	if (size == 36) {
-		for (int i = 0; i < 52; ++i)
-			if (i % 13 > 3)
-				cards.push_back(Card(i));
-	}
-	else {
-		for (int i = 0; i < 52; ++i)
-			cards.push_back(Card(i));
-	}
-	size = cards.size();
-	for (int i = 0; i < size; ++i) {
+	for (int i = 0; i < 52; ++i)
+		cards.push_back(Card(i));
+	for (int i = 0; i < size; ++i) {//shuffle
 		int rnd = rand() % cards.size();
 		new_deck.push_back(cards[rnd]);
 		swap(cards[rnd], cards[cards.size() - 1]);
